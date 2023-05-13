@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+     
+      <title>Retrouver-Together We Come</title>
+      <style>
+        *{
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-decoration: none;
+          box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        }
+        body{
+          font-family: sans-serif;
+          background:linear-gradient(120deg,#2980b9, #8e44ad);
+          user-select: none;
+          
+      
+          
+        }
+        .mg{
+          min-height: 100vh;
+        display: flex;
+        align-items: left;
+        justify-content: center;
+        padding: 20px;
+        background-color: red ;
+        scroll-behavior: auto;
+        }
+        nav .logo{
+          color: white;
+          font-size: 33px;
+          font-weight: bold;
+          line-height: 70px;
+          padding-left: 110px;
+        }
+        nav{
+          height: 70px;
+          background: #3B2667;
+          box-shadow: 0 3px 15px rgba(0,0,0,.4);
+        }
+        nav ul{
+          float: right;
+          margin-right: 30px;
+        }
+        nav ul li{
+          display: inline-block;
+        }
+        nav ul li a{
+          color: white;
+          display: block;
+          padding: 0 15px;
+          line-height: 70px;
+          font-size: 20px;
+          background: #3B2667;
+          transition: .5s;
+        }
+        nav ul li a:hover,
+        nav ul li a.active{
+          color: #23dbdb;
+        }
+        nav ul ul{
+          position: absolute;
+          top: 85px;
+          border-top: 3px solid #23dbdb;
+          opacity: 0;
+          visibility: hidden;
+        }
+        nav ul li:hover > ul{
+          top: 70px;
+          opacity: 1;
+          visibility: visible;
+          transition: .3s linear;
+        }
+        nav ul ul li{
+          width: 150px;
+          display: list-item;
+          position: relative;
+          border: 1px solid #042331;
+          border-top: none;
+        }
+        nav ul ul li a{
+          line-height: 50px;
+        }
+        nav ul ul ul{
+          border-top: none;
+        }
+        nav ul ul ul li{
+          position: relative;
+          top: -70px;
+          left: 150px;
+        }
+        nav ul ul li a i{
+          margin-left: 45px;
+        }
+        .container {
+         position: absolute;
+         
+         left:24%;
+          max-width: 700px;
+          width: 100%;
+          background: #fff;
+          padding: 25px;
+          border-radius: 8px;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+          align-items: left;
+        }
+        .container header {
+          font-size: 1.5rem;
+          color: #333;
+          font-weight: 500;
+          text-align: center;
+        }
+        .container .form {
+          margin-top: 30px;
+        }
+        .form .input-box {
+          width: 100%;
+          margin-top: 20px;
+        }
+        .input-box label {
+          color: #333;
+        }
+        .form :where(.input-box input, .select-box) {
+          position: relative;
+          height: 50px;
+          width: 100%;
+          outline: none;
+          font-size: 1rem;
+          color: #707070;
+          margin-top: 8px;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          padding: 0 15px;
+        }
+        .input-box input:focus {
+          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+        }
+        .form .column {
+          display: flex;
+          column-gap: 15px;
+        }
+        .form .gender-box {
+          margin-top: 20px;
+        }
+        .gender-box h3 {
+          color: #333;
+          font-size: 1rem;
+          font-weight: 400;
+          margin-bottom: 8px;
+        }
+        .form :where(.gender-option, .gender) {
+          display: flex;
+          align-items: center;
+          column-gap: 50px;
+          flex-wrap: wrap;
+        }
+        .form .gender {
+          column-gap: 5px;
+        }
+        .gender input {
+          accent-color: rgb(130, 106, 251);
+        }
+        .form :where(.gender input, .gender label) {
+          cursor: pointer;
+        }
+        .gender label {
+          color: #707070;
+        }
+        .address :where(input, .select-box) {
+          margin-top: 15px;
+        }
+        .select-box select {
+          height: 100%;
+          width: 100%;
+          outline: none;
+          border: none;
+          color: #707070;
+          font-size: 1rem;
+        }
+        .form button {
+          height: 55px;
+          width: 100%;
+          color: #fff;
+          font-size: 1rem;
+          font-weight: 400;
+          margin-top: 30px;
+          border: none;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          background: rgb(130, 106, 251);
+        }
+        .form button:hover {
+          background: rgb(88, 56, 250);
+        }
+        /*Responsive*/
+        @media screen and (max-width: 500px) {
+          .form .column {
+            flex-wrap: wrap;
+          }
+          .form :where(.gender-option, .gender) {
+            row-gap: 15px;
+          }
+        }
+        .wrapper {
+        
+          max-width: 550px;
+          top:100px;
+          height: 400px;
+          background:beige;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          border-radius: 12px;
+          
+        }
+        .wrapper i.button {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 36px;
+          width: 36px;
+          background-color: #343f4f;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 36px;
+          color: beige;
+          font-size: 15px;
+          transition: all 0.3s linear;
+          z-index: 100;
+          cursor: pointer;
+        }
+        i.button:active {
+          transform: scale(0.94) translateY(-50%);
+        }
+        i#prev {
+          left: 25px;
+        }
+        i#next {
+          right: 25px;
+        }
+        .image-container {
+          height: 320px;
+          max-width: 500px;
+          width: 100%;
+          overflow: hidden;
+        }
+        .image-container .carousel {
+          display: flex;
+          height: 100%;
+          width: 100%;
+          transition: all 0.4s ease;
+        }
+        .carousel img {
+          height: 100%;
+          width: 100%;
+          border-radius: 18px;
+          border: 10px solid beige;
+          object-fit: cover;
+        }
+       .mk{
+          
+          display: right;
+          width:600px;
+          background:beige;
+        }
+        section{
+          display: flex;
+          background:linear-gradient(120deg,#2980b9, #8e44ad);
+        }
+        .bg{
+          background:linear-gradient(120deg,#2980b9, #8e44ad);
+        }
+      </style>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+      
+   </head>
+   <body>
+      <nav>
+         <label class="logo">Retrouver-Together We Come</label>
+         <ul>
+            <li><a class="active" href="#">Home</a></li>
+           
+            <li>
+               <a href="{{ url_for('aboutus') }}">About Us
+               
+               </a>
+               
+            </li>
+            
+            <li><a href="#">Feedback</a></li>
+            <li>
+              <a href="{{ url_for('logout') }}">Log Out
+              
+              </a>
+              
+           </li>
+         </ul>
+      </nav>
+      <section class="container">
+        <header>User Profile</header>
+        
+         <form action="{{ url_for('user') }}" class="form" method="post" enctype="multipart/form-data" onsubmit="return validate()">
+          {% if mesage is defined and mesage %}
+          <div class="alert alert-warning">{{ mesage }}</div>
+          {% endif %}
+           <!-- <div class="input-box"> 
+            <label>First Name</label>                                                                                   
+            <input type="text" placeholder="Enter full name" required />
+          </div> -->
+          <div class="column">
+              <div class="input-box">
+                <label>First Name</label>
+                <input type="text" class="form-control" id="fname" name="fname" minlength="2" placeholder="Enter first name" required />
+              </div>
+              <div class="input-box">
+                <label>Last Name</label>
+                <input type="text" class="form-control" id="lname" name="lname" minlength="2" placeholder="Enter last name" required />
+              </div>
+            </div>
+          
+  
+          <div class="column">
+            <div class="input-box">
+              <label>Phone Number</label>
+              <input type="number" class="form-control" id="phone" name="phone" min="1000000000" pattern="\d{10,}" placeholder="Enter phone number" required />
+            </div>
+            <div class="input-box">
+              <label>Birth Date</label>
+              <input type="date" class="form-control" id="dob" name="dob" placeholder="Enter birth date" min='1943-01-01' max='2015-01-01' required />
+            </div>
+          </div>
+          <div class="input-box">
+              <label>Email Address</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder="Enter email address" required />
+            </div>
+          <div class="gender-box">
+            <h3>Gender</h3>
+            <div class="gender-option">
+              <div class="gender">
+                <input type="radio" id="check-male" name="gender" value="male" checked />
+                <label for="check-male">Male</label>
+              </div>
+              <div class="gender">
+                <input type="radio" value="female" class="form-control" id="check-female" name="gender" />
+                <label for="check-female">Female</label>
+              </div>
+              <div class="gender">
+                <input type="radio" value="other" class="form-control" id="check-other" name="gender" />
+                <label for="check-other">Other</label>
+              </div>
+              <div class="input-box">
+                <label>Image</label>
+                <input type="file" name="file" class="form-control" autocomplete="off" required />
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" href="victim.html">Create Profile</button>
+        <!-- <button>Submit</button> -->
+        </form>
+        <script>
+          function validate()
+          {
+             fname=document.forms[0].elements[0].value;
+             lname=document.forms[0].elements[1].value;
+             email=document.forms[0].elements[3].value;
+             
+             fnamep=/^[a-zA-Z]{2,}$/
+             lnamep=/^[a-zA-Z]{2,}$/
+             if(!fnamep.test(fname)){
+                alert("Invalid First Name");
+                return false;
+             }
+             else if(!lnamep.test(lname)){
+                alert("Invalid Last Name");
+                return false;
+             }
+             else{
+             return true;
+             }
+          }
+         </script>
+      </section>
+   </body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Retrouver-Together We Come</title>
+      <style>
+         *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            box-sizing: border-box;
+          font-family: "Poppins", sans-serif;
+          }
+          body{
+            font-family: sans-serif;
+            overflow: hidden;
+            user-select: none;
+          }
+          
+          nav .logo{
+            color: white;
+            font-size: 33px;
+            font-weight: bold;
+            line-height: 70px;
+            padding-left: 110px;
+          }
+          nav{
+            height: 70px;
+            background: #3B2667;
+            box-shadow: 0 3px 15px rgba(0,0,0,.4);
+          }
+          nav ul{
+            float: right;
+            margin-right: 30px;
+          }
+          nav ul li{
+            display: inline-block;
+          }
+          nav ul li a{
+            color: white;
+            display: block;
+            padding: 0 15px;
+            line-height: 70px;
+            font-size: 20px;
+            background: #3B2667;
+            transition: .5s;
+          }
+          nav ul li a:hover,
+          nav ul li a.active{
+            color: #23dbdb;
+          }
+          nav ul ul{
+            position: absolute;
+            top: 85px;
+            border-top: 3px solid #23dbdb;
+            opacity: 0;
+            visibility: hidden;
+          }
+          nav ul li:hover > ul{
+            top: 70px;
+            opacity: 1;
+            visibility: visible;
+            transition: .3s linear;
+          }
+          nav ul ul li{
+            width: 150px;
+            display: list-item;
+            position: relative;
+            border: 1px solid #042331;
+            border-top: none;
+          }
+          nav ul ul li a{
+            line-height: 50px;
+          }
+          nav ul ul ul{
+            border-top: none;
+          }
+          nav ul ul ul li{
+            position: relative;
+            top: -70px;
+            left: 150px;
+          }
+          nav ul ul li a i{
+            margin-left: 45px;
+          }
+         /* linear-gradient(120deg,#2980b9, #8e44ad)*/
+          section{
+            margin: 0;
+            padding: 0;
+            background:linear-gradient(120deg,#2980b9, #8e44ad);
+            background-size: 100%;
+            height: 100vh;
+            overflow: hidden;
+          }
+          .center{
+            position: absolute;
+            top: 54%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+          }
+          .center h1{
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid silver;
+          }
+          .center form{
+            padding: 0 40px;
+            box-sizing: border-box;
+          }
+          form .txt_field{
+            position: relative;
+            border-bottom: 2px solid #adadad;
+            margin: 30px 0;
+          }
+          .txt_field input{
+            width: 100%;
+            padding: 0 5px;
+            height: 40px;
+            font-size: 16px;
+            border: none;
+            background: none;
+            outline: none;
+          }
+          .txt_field label{
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            color: #adadad;
+            transform: translateY(-50%);
+            font-size: 16px;
+            pointer-events: none;
+            transition: .5s;
+          }
+          .txt_field span::before{
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #2691d9;
+            transition: .5s;
+          }
+          .txt_field input:focus ~ label,
+          .txt_field input:valid ~ label{
+            top: -5px;
+            color: #2691d9;
+          }
+          .txt_field input:focus ~ span::before,
+          .txt_field input:valid ~ span::before{
+            width: 100%;
+          }
+          .pass{
+            margin: -5px 0 20px 5px;
+            color: #a6a6a6;
+            cursor: pointer;
+          }
+          pass:hover{
+            text-decoration: underline;
+          }
+          input[type="submit"]{
+            width: 100%;
+            height: 50px;
+            border: 1px solid;
+            background: #2691d9;
+            border-radius: 25px;
+            font-size: 18px;
+            color: #e9f4fb;
+            font-weight: 700;
+            cursor: pointer;
+            outline: none;
+          }
+          input[type="submit"]:hover{
+            border-color: #2691d9;
+            transition: .5s;
+          }
+          .signup_link{
+            margin: 30px 0;
+            text-align: center;
+            font-size: 16px;
+            color: #666666;
+          }
+          .signup_link a{
+            color: #2691d9;
+            text-decoration: none;
+          }
+          .signup_link a:hover{
+            text-decoration: underline;
+          }
+          
+        
+      </style>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      
+   </head>
+   <body>
+      <nav>
+         <label class="logo">Retrouver-Together We Come</label>
+         <ul>
+            <li><a class="active" href="#">Home</a></li>
+            
+            <li>
+               <a href="{{ url_for('aboutus') }}">About Us
+               
+               </a>
+            
+         </ul>
+      </nav>
+      <section><div class="center">
+        <h1>Login</h1>
+        <form action="{{ url_for('login') }}" method="post">
+         {% if mesage is defined and mesage %}
+           <div class="alert alert-warning">{{ mesage }}</div>
+        {% endif %}
+          <div class="txt_field">
+            <input type="text" class="form-control" id="uname" name="uname" minlength=5 required >
+          
+            <!-- <input type="text" name="username" required > -->
+            <span></span>
+            <label>Username</label>
+            <!--<input type="text" class="form-control" id="uname" name="uname" required >-->
+          </div>
+          <div class="txt_field">
+            <input type="password" class="form-control" id="password" name="password" name="pswd" minlength=5 required>
+          
+            <!-- <input type="password" name="password" required> -->
+            <span></span>
+            <label>Password</label>
+            <!--<input type="password" class="form-control" id="password" name="password" name="pswd" required>-->
+          </div>
+          <input type="submit" value="login" >
+          <!--<button type="submit" class="btn btn-primary">Login</button>-->
+          <div class="signup_link">
+            Not a member? <a href="/signup">Signup</a>
+          </div>
+        </form>
+      </div>
+      <script>
+        
+      </script>
+  </section>
+   </body>
+</html>

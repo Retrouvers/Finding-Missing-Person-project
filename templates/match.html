@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Retrouver-Together We Come</title>
+      <style>
+        *{
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-decoration: none;
+          box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        }
+        body{
+          font-family: sans-serif;
+          background:linear-gradient(120deg,#2980b9, #8e44ad);
+          user-select: none;
+          
+      
+          
+        }
+        .mg{
+          min-height: 100vh;
+        display: flex;
+        align-items: left;
+        justify-content: center;
+        padding: 20px;
+        background-color: red ;
+        scroll-behavior: auto;
+        }
+        nav .logo{
+          color: white;
+          font-size: 33px;
+          font-weight: bold;
+          line-height: 70px;
+          padding-left: 110px;
+        }
+        nav{
+          height: 70px;
+          background: #3B2667;
+          box-shadow: 0 3px 15px rgba(0,0,0,.4);
+        }
+        nav ul{
+          float: right;
+          margin-right: 30px;
+        }
+        nav ul li{
+          display: inline-block;
+        }
+        nav ul li a{
+          color: white;
+          display: block;
+          padding: 0 15px;
+          line-height: 70px;
+          font-size: 20px;
+          background: #3B2667;
+          transition: .5s;
+        }
+        nav ul li a:hover,
+        nav ul li a.active{
+          color: #23dbdb;
+        }
+        nav ul ul{
+          position: absolute;
+          top: 85px;
+          border-top: 3px solid #23dbdb;
+          opacity: 0;
+          visibility: hidden;
+        }
+        nav ul li:hover > ul{
+          top: 70px;
+          opacity: 1;
+          visibility: visible;
+          transition: .3s linear;
+        }
+        nav ul ul li{
+          width: 150px;
+          display: list-item;
+          position: relative;
+          border: 1px solid #042331;
+          border-top: none;
+        }
+        nav ul ul li a{
+          line-height: 50px;
+        }
+        nav ul ul ul{
+          border-top: none;
+        }
+        nav ul ul ul li{
+          position: relative;
+          top: -70px;
+          left: 150px;
+        }
+        nav ul ul li a i{
+          margin-left: 45px;
+        }
+        .container {
+         position: absolute;
+         
+         left:24%;
+          max-width: 700px;
+          width: 100%;
+          background: #fff;
+          padding: 25px;
+          border-radius: 8px;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+          align-items: left;
+        }
+        .container header {
+          font-size: 1.5rem;
+          color: #333;
+          font-weight: 500;
+          text-align: center;
+        }
+        .container .form {
+          margin-top: 30px;
+        }
+        .form .input-box {
+          width: 60%;
+          margin-top: 20px;
+        }
+        .input-box label {
+          color: #333;
+        }
+        .form :where(.input-box input, .select-box) {
+          position: relative;
+          height: 30px;
+          width: 70%;
+          outline: none;
+          font-size: 1rem;
+          color: #707070;
+          margin-top: 2px;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          padding: 0 15px;
+        }
+        .input-box input:focus {
+          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+        }
+        .form .column .input-box{
+          display: flex;
+          column-gap: 10px;
+        }
+        .form .gender-box {
+          margin-top: 20px;
+        }
+        .gender-box h3 {
+          color: #333;
+          font-size: 1rem;
+          font-weight: 400;
+          margin-bottom: 8px;
+        }
+        .form :where(.gender-option, .gender) {
+          display: flex;
+          align-items: center;
+          column-gap: 50px;
+          flex-wrap: wrap;
+        }
+        .form .gender {
+          column-gap: 5px;
+        }
+        .gender input {
+          accent-color: rgb(130, 106, 251);
+        }
+        .form :where(.gender input, .gender label) {
+          cursor: pointer;
+        }
+        .gender label {
+          color: #707070;
+        }
+        .address :where(input, .select-box) {
+          margin-top: 15px;
+        }
+        .select-box select {
+          height: 100%;
+          width: 100%;
+          outline: none;
+          border: none;
+          color: #707070;
+          font-size: 1rem;
+        }
+        .form button {
+          height: 55px;
+          width: 100%;
+          color: #fff;
+          font-size: 1rem;
+          font-weight: 400;
+          margin-top: 30px;
+          border: none;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          background: rgb(130, 106, 251);
+        }
+        .form button:hover {
+          background: rgb(88, 56, 250);
+        }
+        /*Responsive*/
+        @media screen and (max-width: 500px) {
+          .form .column {
+            flex-wrap: wrap;
+          }
+          .form :where(.gender-option, .gender) {
+            row-gap: 15px;
+          }
+        }
+        .wrapper {
+        
+          max-width: 550px;
+          top:100px;
+          height: 400px;
+          background:beige;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          border-radius: 12px;
+          
+        }
+        .wrapper i.button {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 36px;
+          width: 36px;
+          background-color: #343f4f;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 36px;
+          color: beige;
+          font-size: 15px;
+          transition: all 0.3s linear;
+          z-index: 100;
+          cursor: pointer;
+        }
+        i.button:active {
+          transform: scale(0.94) translateY(-50%);
+        }
+        i#prev {
+          left: 25px;
+        }
+        i#next {
+          right: 25px;
+        }
+        .image-container {
+          height: 320px;
+          max-width: 500px;
+          width: 100%;
+          overflow: hidden;
+        }
+        .image-container .carousel {
+          display: flex;
+          height: 100%;
+          width: 100%;
+          transition: all 0.4s ease;
+        }
+        .carousel img {
+          height: 100%;
+          width: 100%;
+          border-radius: 18px;
+          border: 10px solid beige;
+          object-fit: cover;
+        }
+       .mk{
+          
+          display: right;
+          width:600px;
+          background:beige;
+        }
+        section{
+          display: flex;
+        }
+        .image{
+          width:100%;
+          height:10%;
+          display:flex;
+          justify-content:left;
+          }
+          
+        .image input{
+          height:200px;
+          width:350px;
+          border:10px solid;
+        }
+        table{
+            width:70%;
+            border-style: none;
+        }
+        
+        .bg{
+          background-color:red;
+        }
+      </style>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+      <script src="C:\Users\hp\OneDrive\Desktop\flask\static\js\slider.js" defer></script>
+   </head>
+   <body>
+      <nav>
+         <label class="logo">Retrouver-Together We Come</label>
+         <ul>
+            <li><a class="active" href="{{ url_for('victim') }}">Home</a></li>
+           
+            <li>
+               <a href="{{ url_for('aboutus') }}">About Us
+               
+               </a>
+               
+            </li>
+            
+            <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+            <li>
+              <a href="{{ url_for('logout') }}">Log Out
+              
+              </a>
+              
+           </li>
+         </ul>
+      </nav>
+      <section>
+           <div class="bg">
+      <div class="container">
+        <header>POTENTIAL MATCH FOUND!!</header>
+        
+        
+        <form  action="{{ url_for('match') }}" method="POST" enctype="multipart/form-data" >
+          <table border=0>
+            <tr>
+                <td><div class="input-box">
+                  {% if idname %}
+                  <div class="image">
+                      <img src="{{ url_for('static', filename='/user_images/'+idname+'.jpg') }}">
+                  </div>
+              {% endif %}
+
+                    
+                </td>
+                <td><div class="input-box">
+                  {% if filename %}
+                  <div class="image">
+                      <img src="{{ url_for('static', filename='/victim_images/'+filename) }}">
+                  </div>
+              {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td><center>Registered Image</center></td>
+                <td><center>Reported Image</center></td>
+            </tr>
+            <tr>
+                <td colspan=2><div class="input-box"> 
+                    <label><u><b>First Name: </b></u></label>
+                    <label>{{ fname }}</label>
+                  </div><br>
+                  <label><u><b>Last Name: </b></u></label>
+                    <label>{{ lname }}</label>
+                  </div><br>
+                  <div class="input-box">
+                    <label><u><b>Birth Date: </b></u></label>
+                    <label>{{ dob }}</label>
+                  </div><br>
+                  <div class="input-box">
+                    <label><u><b>Contact: </b></u></label>
+                    <label>{{ contact }}</label>
+                  </div><br>
+                  <div class="input-box">
+                    <label><u><b>Email Address: </b></u></label>
+                    <label>{{ email }}</label>
+                  </div><br>
+                  <div class="input-box">
+                    <label><u><b>Gender: </b></u></label>
+                    <label>{{ gender }}</label>
+                  </div>
+                </td>
+                
+                
+                
+
+            </tr>
+          </table>
+          
+          
+          <!-- <button>Submit</button> -->
+        </form>
+    </div></div></section>
+   
+   </body>
+</html>

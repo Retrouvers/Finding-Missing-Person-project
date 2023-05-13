@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Retrouver-Together We Come</title>
+      <style>
+         *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            box-sizing: border-box;
+          font-family: "Poppins", sans-serif;
+          }
+          body{
+            font-family: sans-serif;
+            
+            user-select: none;
+          }
+          
+          nav .logo{
+            color: white;
+            font-size: 33px;
+            font-weight: bold;
+            line-height: 70px;
+            padding-left: 110px;
+          }
+          nav{
+            height: 70px;
+            background: #3B2667;
+            box-shadow: 0 3px 15px rgba(0,0,0,.4);
+          }
+          nav ul{
+            float: right;
+            margin-right: 30px;
+          }
+          nav ul li{
+            display: inline-block;
+          }
+          nav ul li a{
+            color: white;
+            display: block;
+            padding: 0 15px;
+            line-height: 70px;
+            font-size: 20px;
+            background: #3B2667;
+            transition: .5s;
+          }
+          nav ul li a:hover,
+          nav ul li a.active{
+            color: #23dbdb;
+          }
+          nav ul ul{
+            position: absolute;
+            top: 85px;
+            border-top: 3px solid #23dbdb;
+            opacity: 0;
+            visibility: hidden;
+          }
+          nav ul li:hover > ul{
+            top: 70px;
+            opacity: 1;
+            visibility: visible;
+            transition: .3s linear;
+          }
+          nav ul ul li{
+            width: 150px;
+            display: list-item;
+            position: relative;
+            border: 1px solid #042331;
+            border-top: none;
+          }
+          nav ul ul li a{
+            line-height: 50px;
+          }
+          nav ul ul ul{
+            border-top: none;
+          }
+          nav ul ul ul li{
+            position: relative;
+            top: -70px;
+            left: 150px;
+          }
+          nav ul ul li a i{
+            margin-left: 45px;
+          }
+         /* linear-gradient(120deg,#2980b9, #8e44ad)*/
+          section{
+            margin: 0;
+            padding: 0;
+            background:linear-gradient(120deg,#2980b9, #8e44ad);
+            background-size: 100%;
+            height: 100vh;
+            overflow: hidden;
+          }
+          
+          .ab{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh ;
+            background:linear-gradient(#0f4675,#0f4675 50%, #fff 50%, #fff 100%);
+        }
+        .container{
+            width: 1100px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap:wrap ;
+        }
+        .container .box{
+                position: relative;
+                width: 320px;
+                background:#fff;
+                padding: 100px 40px 60px;
+                box-shadow:0 15px 45px rgba(0,0,0,.1);
+
+        }
+        .container .box:before{
+            content:'';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width:100%;
+            height:100%;
+            background: #ff226d;
+            transform:scaleY(0);
+            transform-origin: top;
+            transition: transform 0.5s;
+        }
+        .container .box:hover:before{
+            transform: scaleY(1);
+            transform-origin: bottom;
+            transition: transform 0.5s;
+        }
+        .container .box h2{
+            position: absolute;
+            left: 40px;
+            top: 60px;
+            font-size: 4em ;
+            font-weight: 800;
+            z-index: 1;
+            opacity: 0.5;
+            transition: 0.5s;
+        }
+        .container .box:hover h2{
+            opacity: 1;
+            color: #fff;
+            transform: translateY(-40px);
+        }
+        .container .box h3{
+            position: relative;
+            font-size: 1.5em;
+            z-index: 2;
+            color: #333;
+            transition: 0.5s;
+        }
+        .container .box p{
+            position: relative;
+            
+            z-index: 2;
+            color: #555;
+            transition: 0.5s;
+        }
+        .container .box:hover h3,
+        .container .box:hover p{
+            color: #fff;
+        }
+        .headi{
+            font-size: 20px;
+            background: #fff;
+            color: #042331;
+        }
+        
+        
+      </style>
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      
+   </head>
+   <body>
+      <nav>
+         <label class="logo">Retrouver-Together We Come</label>
+         <ul>
+            <li><a class="active" href="{{ url_for('victim') }}">Home</a></li>
+            
+            <li>
+               <a href="#">About Us
+               
+               </a>
+               
+            </li>
+            
+            <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+            <li>
+              <a href="{{ url_for('logout') }}">Log Out
+              
+              </a>
+              
+           </li>
+         </ul>
+      </nav>
+      <section>
+      <div class="headi">
+            <h1><center>About Us</center>
+                
+            </h1>
+        </div>
+       <div class="ab">
+        <div class="container">
+            <div class="box">
+                <h2>01</h2>
+                
+                <p>
+                    Another of the world's most populous countries, India has a worrying
+                    number of cases of missing persons. Statistics show that 88 women, kids,
+                    and men go missing by the hour, 2,130 people go missing every day, 
+                    and 64,851 people every month.The thought of a family member, 
+                    a friend of someone else you care about going missing can be terrifying.
+                </p></div>
+                <div class="box">
+                    <h2>02</h2>
+                    
+                    <p>
+                        We at Retrouver help you find your loved ones using Face Recognition Technologies. 
+                        If someone you know is missing then, Register the missing person with us. 
+                        if a match is found we will contact you..!!
+                    </p></div>
+                <div class="box">
+                    <h2>03</h2>
+                    
+                    <p>
+                        The joy of reuniting with someone after a long seperation is next level.
+                        Retrouver helps you to find your loved ones and feel this joy at the peak level.
+                        
+                    </p>
+            </div>
+        </div></div>
+        
+  </section>
+   </body>
+</html>
